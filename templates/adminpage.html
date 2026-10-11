@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin - Asset Tracker</title>
+
+
+    <!-- Admin CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='adminpage.css') }}">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app-layout">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-logo">
+
+            <i class="fa-solid fa-boxes-stacked"></i>
+
+            <div>
+
+                <h2>Asset</h2>
+
+                <span>Tracker</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <div class="sidebar-menu">
+
+
+            <p class="menu-title">
+                MAIN MENU
+            </p>
+
+
+            <!-- DASHBOARD -->
+
+            <a href="{{ url_for('dashboard') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <!-- ASSETS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-computer"></i>
+
+                <span>Assets</span>
+
+            </a>
+
+
+            <!-- USERS -->
+
+            <a href="{{ url_for('user_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Users</span>
+
+            </a>
+
+
+            <!-- REPORTS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>Reports</span>
+
+            </a>
+
+
+            <!-- SCRAP -->
+
+            <a href="{{ url_for('scrab_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-recycle"></i>
+
+                <span>Scrap</span>
+
+            </a>
+
+
+            <p class="menu-title menu-space">
+                SYSTEM
+            </p>
+
+
+            <!-- SETTINGS -->
+
+            <a href="{{ url_for('adminpage') }}"
+               class="side-link active">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- LOGOUT -->
+
+        <div class="sidebar-bottom">
+
+            <a href="{{ url_for('login') }}"
+               class="side-link logout-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="page-content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <h1>Admin Panel</h1>
+
+                <p>
+                    Manage and monitor your Asset Tracker
+                </p>
+
+            </div>
+
+
+            <div class="admin-status">
+
+                <i class="fa-solid fa-circle"></i>
+
+                Administrator
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             WELCOME CARD
+        ================================================== -->
+
+        <div class="welcome-card">
+
+
+            <div class="welcome-icon">
+
+                <i class="fa-solid fa-hand"></i>
+
+            </div>
+
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+                    Welcome
+                </span>
+
+                <h2>
+                    Welcome Admin
+                </h2>
+
+                <p>
+                    Here we start. Manage your assets,
+                    users and reports from the dashboard.
+                </p>
+
+
+                <a href="{{ url_for('dashboard') }}"
+                   class="dashboard-button">
+
+                    <i class="fa-solid fa-gauge-high"></i>
+
+                    Go to Dashboard
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             ADMIN QUICK ACTIONS
+        ================================================== -->
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Quick Access</h2>
+
+                <p>
+                    Frequently used Asset Tracker sections
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-grid">
+
+
+            <!-- ASSETS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="admin-card">
+
+                <div class="admin-card-icon">
+
+                    <i class="fa-solid fa-computer"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Assets</h3>
+
+                    <p>
+                        View and manage assets
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+
+            <!-- USERS -->
+
+            <a href="{{ url_for('user_details') }}"
+               class="admin-card">
+
+                <div class="admin-card-icon">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Users</h3>
+
+                    <p>
+                        Manage employees
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+
+            <!-- ADD ASSET -->
+
+            <a href="{{ url_for('Add_components') }}"
+               class="admin-card">
+
+                <div class="admin-card-icon">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Add Asset</h3>
+
+                    <p>
+                        Add a new asset
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+
+            <!-- ADD SERVER -->
+
+            <a href="{{ url_for('add_server') }}"
+               class="admin-card">
+
+                <div class="admin-card-icon">
+
+                    <i class="fa-solid fa-server"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Add Server</h3>
+
+                    <p>
+                        Register a new server
+                    </p>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>
+

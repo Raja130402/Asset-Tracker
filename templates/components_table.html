@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Assets Table</title>
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='components_table.css') }}">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PAGE
+====================================================== -->
+
+<div class="page">
+
+
+    <!-- =================================================
+         TOP NAVIGATION
+    ================================================== -->
+
+    <div class="top-bar">
+
+
+        <div class="page-title">
+
+            <div class="title-icon">
+
+                <i class="fa-solid fa-computer"></i>
+
+            </div>
+
+            <div>
+
+                <h1>Assets</h1>
+
+                <p>Manage your asset inventory</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+
+            <a href="{{ url_for('dashboard') }}"
+               class="back-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="{{ url_for('Add_components') }}"
+               class="add-btn">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Item
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         TABLE CONTAINER
+    ================================================== -->
+
+    <div class="table-card">
+
+
+        <!-- TABLE HEADER -->
+
+        <div class="table-header">
+
+
+            <div>
+
+                <h2>Assets Table</h2>
+
+                <p>
+                    View and manage registered assets
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search assets...">
+
+            </div>
+
+
+        </div>
+
+
+
+
+<!-- =====================================================
+     TABLE
+====================================================== -->
+
+<div class="table-wrapper">
+
+    <table id="assetTable">
+
+        <!-- FIXED COLUMN WIDTHS -->
+
+        <colgroup>
+
+            <col class="col-id">
+            <col class="col-product">
+            <col class="col-category">
+            <col class="col-brand">
+            <col class="col-model">
+            <col class="col-serial">
+            <col class="col-seating">
+            <col class="col-assigned">
+            <col class="col-location">
+            <col class="col-license">
+            <col class="col-condition">
+            <col class="col-action">
+
+        </colgroup>
+
+
+        <!-- =================================================
+             TABLE HEADER
+        ================================================== -->
+
+        <thead>
+
+            <tr>
+
+                <th>S.ID</th>
+
+                <th>Product ID</th>
+
+                <th>Category</th>
+
+                <th>Brand</th>
+
+                <th>Model</th>
+
+                <th>Serial No</th>
+
+                <th>Seating No</th>
+
+                <th>Assigned To</th>
+
+                <th>Location</th>
+
+                <th>License</th>
+
+                <th>Condition</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+
+        <!-- =================================================
+             TABLE BODY
+        ================================================== -->
+
+        
+<tbody>
+
+{% for row in data %}
+
+    <tr>
+
+        <!-- S.ID -->
+
+        <td class="id-cell">
+            {{ row[1] }}
+        </td>
+
+
+        <!-- PRODUCT ID -->
+
+        <td>
+            <span class="product-id">
+                {{ row[0] }}
+            </span>
+        </td>
+
+
+        <!-- CATEGORY -->
+
+        <td>
+            <span class="category-badge">
+                {{ row[2] }}
+            </span>
+        </td>
+
+
+        <!-- BRAND -->
+
+        <td>
+            {{ row[3] }}
+        </td>
+
+
+        <!-- MODEL -->
+
+        <td>
+            {{ row[4] }}
+        </td>
+
+
+        <!-- SERIAL -->
+
+        <td>
+            {{ row[5] }}
+        </td>
+
+
+        <!-- SEATING -->
+
+        <td>
+            {{ row[6] }}
+        </td>
+
+
+        <!-- ASSIGNED TO -->
+
+        <td>
+
+            {% if row[7] %}
+
+                <span class="assigned-user">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    {{ row[7] }}
+
+                </span>
+
+            {% else %}
+
+                <span class="not-assigned">
+                    Not Assigned
+                </span>
+
+            {% endif %}
+
+        </td>
+
+
+        <!-- LOCATION -->
+
+        <td>
+            {{ row[8] }}
+        </td>
+
+
+        <!-- LICENSE -->
+
+        <td>
+            {{ row[9] }}
+        </td>
+
+
+        <!-- CONDITION -->
+
+        <td>
+
+            {% if row[10]|lower|trim == 'good' %}
+
+                <span class="status good">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Good
+
+                </span>
+
+            {% elif row[10]|lower|trim == 'damaged' %}
+
+                <span class="status damaged">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    Damaged
+
+                </span>
+
+            {% else %}
+
+                <span class="status">
+                    {{ row[10] }}
+                </span>
+
+            {% endif %}
+
+        </td>
+
+
+        <!-- ACTION -->
+
+        <td>
+
+            <div class="action-buttons">
+
+                <a href="{{ url_for('edit', id=row[1]) }}"
+                   class="edit-btn"
+                   title="Edit">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                </a>
+
+
+                <a href="{{ url_for('delete', id=row[1]) }}"
+                   class="delete-btn"
+                   title="Delete"
+                   onclick="return confirm('Delete this asset?')">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </a>
+
+            </div>
+
+        </td>
+
+    </tr>
+
+{% endfor %}
+
+</tbody>
+
+
+    </table>
+
+</div>
+
+
+
+<!-- =====================================================
+     SEARCH SCRIPT
+====================================================== -->
+
+<script>
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const table =
+    document.getElementById("assetTable");
+
+searchInput.addEventListener("keyup", function () {
+
+    const searchValue =
+        searchInput.value.toLowerCase();
+
+    const rows =
+        table.querySelectorAll("tbody tr");
+
+
+    rows.forEach(function (row) {
+
+        const rowText =
+            row.textContent.toLowerCase();
+
+
+        if (rowText.includes(searchValue)) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+

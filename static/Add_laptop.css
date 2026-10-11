@@ -1,0 +1,441 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 35px 20px;
+}
+
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+.asset-form {
+    width: 100%;
+    max-width: 1050px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   FORM HEADER
+========================================================= */
+
+.form-header {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 28px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* =========================================================
+   FORM ICON
+========================================================= */
+
+.form-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background-color: #fcebed;
+
+    color: #722F37;
+
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   FORM HEADER TEXT
+========================================================= */
+
+.form-header h1 {
+    font-size: 25px;
+
+    color: #333;
+
+    margin-bottom: 4px;
+}
+
+.form-header p {
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.error {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    background-color: #fff1f2;
+
+    border: 1px solid #fecdd3;
+
+    color: #be123c;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.success {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    background-color: #ecfdf3;
+
+    border: 1px solid #bbf7d0;
+
+    color: #15803d;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+form h2 {
+    position: relative;
+
+    font-size: 16px;
+
+    color: #722F37;
+
+    margin-top: 25px;
+    margin-bottom: 18px;
+
+    padding-left: 12px;
+}
+
+form h2::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 2px;
+
+    width: 4px;
+    height: 18px;
+
+    border-radius: 3px;
+
+    background-color: #722F37;
+}
+
+
+/* =========================================================
+   FORM GRID
+========================================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px 20px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.form-group label {
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #555;
+}
+
+
+/* =========================================================
+   INPUT / SELECT / TEXTAREA
+========================================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d9dde3;
+
+    border-radius: 7px;
+
+    color: #333;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a0a5ad;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #722F37;
+
+    box-shadow:
+        0 0 0 3px rgba(114, 47, 55, 0.08);
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.form-group select {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.form-group textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* =========================================================
+   FULL WIDTH
+========================================================= */
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 12px 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #722F37;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.submit:hover {
+    background-color: #5c252c;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   REQUIRED FIELD
+========================================================= */
+
+.form-group input:required,
+.form-group select:required {
+    background-color: #fffdfd;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .main {
+        padding: 25px 15px;
+    }
+
+    .asset-form {
+        padding: 24px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .main {
+        padding: 15px 10px;
+    }
+
+    .asset-form {
+        padding: 20px 15px;
+
+        border-radius: 10px;
+    }
+
+    .form-header {
+        align-items: flex-start;
+    }
+
+    .form-icon {
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .form-header h1 {
+        font-size: 22px;
+    }
+
+    .form-header p {
+        font-size: 12px;
+    }
+
+    form h2 {
+        font-size: 15px;
+    }
+}

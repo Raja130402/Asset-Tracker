@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Computer Assets</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='computer_assets.css') }}">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- =========================================
+     HEADER
+========================================== -->
+
+<div class="page-header">
+
+    <div>
+
+        <h1>Computer Assets</h1>
+
+        <p>
+            Manage all registered computer assets
+        </p>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <!-- BACK BUTTON -->
+
+        <a href="{{ url_for('system_details') }}"
+           class="add-button">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Assets
+
+        </a>
+
+
+        <!-- ADD COMPUTER -->
+
+        <a href="{{ url_for('add_computer') }}"
+           class="add-button">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Computer
+
+        </a>
+
+    </div>
+
+</div>
+
+
+    <!-- =========================================
+         TABLE
+    ========================================== -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Product ID</th>
+
+                    <th>Brand</th>
+
+                    <th>Model</th>
+
+                    <th>Serial Number</th>
+
+                    <th>Assigned To</th>
+
+                    <th>Location</th>
+
+                    <th>RAM</th>
+
+                    <th>Storage</th>
+
+                    <th>OS</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for computer in computers %}
+
+                
+                    <tr class="clickable-row">
+                
+
+                    <td>
+    <a href="{{ url_for('computer_details', id=computer[0]) }}"
+       class="product-link">
+
+        {{ computer[1] }}
+
+    </a>
+</td>
+
+                    <td>
+                        {{ computer[3] }}
+                    </td>
+
+                    <td>
+                        {{ computer[4] }}
+                    </td>
+
+                    <td>
+                        {{ computer[5] }}
+                    </td>
+
+                    <td>
+                        {{ computer[6] or 'Not Assigned' }}
+                    </td>
+
+                    <td>
+                        {{ computer[7] }}
+                    </td>
+
+                    <td>
+                        {{ computer[11] }}
+                    </td>
+
+                    <td>
+                        {{ computer[12] }}
+                    </td>
+
+                    <td>
+                        {{ computer[13] }}
+                    </td>
+
+                    <td>
+                        {{ computer[9] }}
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="10"
+                        class="no-data">
+
+                        No computer assets found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

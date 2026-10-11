@@ -1,0 +1,302 @@
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='components_table.css') }}">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<!-- TOP NAVIGATION -->
+
+<div class="top-bar">
+
+    <div class="page-title">
+
+        <div class="title-icon scrap-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <div>
+            <h1>Scrap Details</h1>
+            <p>View damaged assets</p>
+        </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <a href="{{ url_for('dashboard') }}"
+           class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+            Dashboard
+
+        </a>
+
+
+        <a href="{{ url_for('Add_components') }}"
+           class="add-btn">
+
+            <i class="fa-solid fa-plus"></i>
+            Add Item
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- TABLE -->
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <div>
+
+            <h2>Damaged Assets</h2>
+
+            <p>
+                Assets currently marked as damaged
+            </p>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search damaged assets...">
+
+        </div>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table id="assetTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>No.</th>
+                    <th>Product ID</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Serial No</th>
+                    <th>Seating No</th>
+                    <th>Assigned To</th>
+                    <th>Location</th>
+                    <th>License</th>
+                    <th>Condition</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            {% for row in data %}
+
+                <tr>
+
+                    <!-- No -->
+
+                    <td class="id-cell">
+                        {{ loop.index }}
+                    </td>
+
+
+                    <!-- Product ID -->
+
+                    <td>
+
+                        <span class="product-id">
+                            {{ row[1] }}
+                        </span>
+
+                    </td>
+
+
+                    <!-- Category -->
+
+                    <td>
+
+                        <span class="category-badge">
+                            {{ row[2] }}
+                        </span>
+
+                    </td>
+
+
+                    <!-- Brand -->
+
+                    <td>
+                        {{ row[3] }}
+                    </td>
+
+
+                    <!-- Model -->
+
+                    <td>
+                        {{ row[4] }}
+                    </td>
+
+
+                    <!-- Serial -->
+
+                    <td>
+                        {{ row[5] }}
+                    </td>
+
+
+                    <!-- Seating -->
+
+                    <td>
+                        {{ row[6] }}
+                    </td>
+
+
+                    <!-- Assigned -->
+
+                    <td>
+
+                        {% if row[7] %}
+
+                            <span class="assigned-user">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                {{ row[7] }}
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="not-assigned">
+                                Not Assigned
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- Location -->
+
+                    <td>
+                        {{ row[8] }}
+                    </td>
+
+
+                    <!-- License -->
+
+                    <td>
+                        {{ row[9] }}
+                    </td>
+
+
+                    <!-- Condition -->
+
+                    <td>
+
+                        <span class="status damaged">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                            Damaged
+
+                        </span>
+
+                    </td>
+
+
+                    <!-- Action -->
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <a href="{{ url_for('edit', id=row[0]) }}"
+                               class="edit-btn"
+                               title="Edit">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </a>
+
+
+                            <a href="{{ url_for('delete', id=row[0]) }}"
+                               class="delete-btn"
+                               title="Delete"
+                               onclick="return confirm('Delete this asset?')">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            {% else %}
+
+                <tr>
+
+                    <td colspan="12" class="empty-message">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <p>No damaged assets found.</p>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function () {
+
+    const searchValue = this.value.toLowerCase();
+
+    const rows = document.querySelectorAll(
+        "#assetTable tbody tr"
+    );
+
+    rows.forEach(function (row) {
+
+        const text = row.innerText.toLowerCase();
+
+        row.style.display =
+            text.includes(searchValue) ? "" : "none";
+
+    });
+
+});
+
+</script>

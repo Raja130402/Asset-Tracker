@@ -1,0 +1,548 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Asset</title>
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='Add_components.css') }}">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP NAVIGATION
+====================================================== -->
+
+<div class="nav-bar">
+
+    <nav>
+
+
+        <a href="{{ url_for('components_table') }}">
+
+            <button
+                class="back"
+                type="button">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back
+
+            </button>
+
+        </a>
+
+
+        <h1>Asset Tracker</h1>
+
+
+        <a href="{{ url_for('login') }}">
+
+            <button
+                class="logout"
+                type="button">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </a>
+
+
+    </nav>
+
+</div>
+
+
+
+<!-- =====================================================
+     MAIN FORM
+====================================================== -->
+
+<div class="main">
+
+
+    <div class="asset-form">
+
+
+        <!-- FORM TITLE -->
+
+        <div class="form-header">
+
+            <div class="form-icon">
+
+                <i class="fa-solid fa-box"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+
+                    {% if asset %}
+
+                        Update Asset
+
+                    {% else %}
+
+                        Add Asset
+
+                    {% endif %}
+
+                </h2>
+
+                <p>
+                    Enter asset information below
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ERROR MESSAGE
+        ================================================== -->
+
+        {% if error %}
+
+            <div class="error">
+
+                <i class="fa-solid fa-circle-exclamation"></i>
+
+                {{ error }}
+
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+             SUCCESS MESSAGE
+        ================================================== -->
+
+        {% if success %}
+
+            <div class="success">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                {{ success }}
+
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form
+            method="POST"
+
+            {% if asset %}
+
+                action="{{ url_for('update_component', id=asset[0]) }}"
+
+            {% else %}
+
+                action="{{ url_for('Add_components') }}"
+
+            {% endif %}
+        >
+
+
+            <div class="form-grid">
+
+
+                <!-- =================================================
+                     CATEGORY
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Category
+
+                    </label>
+
+
+                    <select name="list">
+
+                        <option value="">
+                            Select Item
+                        </option>
+
+
+                        <option
+                            value="Computers"
+
+                            {% if asset and asset[2] == 'Computers' %}
+                                selected
+                            {% endif %}
+                        >
+                            Computers
+                        </option>
+
+
+                        <option
+                            value="Mouse"
+
+                            {% if asset and asset[2] == 'Mouse' %}
+                                selected
+                            {% endif %}
+                        >
+                            Mouse
+                        </option>
+
+
+                        <option
+                            value="Keyboards"
+
+                            {% if asset and asset[2] == 'Keyboards' %}
+                                selected
+                            {% endif %}
+                        >
+                            Keyboards
+                        </option>
+
+
+                        <option
+                            value="Thin clients"
+
+                            {% if asset and asset[2] == 'Thin clients' %}
+                                selected
+                            {% endif %}
+                        >
+                            Thin clients
+                        </option>
+
+
+                        <option
+                            value="Projectors"
+
+                            {% if asset and asset[2] == 'Projectors' %}
+                                selected
+                            {% endif %}
+                        >
+                            Projectors
+                        </option>
+
+
+                        <option
+                            value="Printers"
+
+                            {% if asset and asset[2] == 'Printers' %}
+                                selected
+                            {% endif %}
+                        >
+                            Printers
+                        </option>
+
+
+                        <option
+                            value="Laptops"
+
+                            {% if asset and asset[2] == 'Laptops' %}
+                                selected
+                            {% endif %}
+                        >
+                            Laptops
+                        </option>
+
+
+                        <option
+                            value="Mobiles"
+
+                            {% if asset and asset[2] == 'Mobiles' %}
+                                selected
+                            {% endif %}
+                        >
+                            Mobiles
+                        </option>
+
+
+                        <option
+                            value="Monitors"
+
+                            {% if asset and asset[2] == 'Monitors' %}
+                                selected
+                            {% endif %}
+                        >
+                            Monitors
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BRAND
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>Brand</label>
+
+                    <input
+                        type="text"
+                        name="Brand"
+
+                        value="{{ asset[3] if asset else '' }}"
+
+                        placeholder="Brand">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MODEL
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>Model</label>
+
+                    <input
+                        type="text"
+                        name="Model"
+
+                        value="{{ asset[4] if asset else '' }}"
+
+                        placeholder="Model">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SERIAL
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>Serial No</label>
+
+                    <input
+                        type="text"
+                        name="seriel"
+
+                        value="{{ asset[5] if asset else '' }}"
+
+                        placeholder="Serial Number">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SEATING
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>Seating No</label>
+
+                    <input
+                        type="text"
+                        name="seating_no"
+
+                        value="{{ asset[6] if asset else '' }}"
+
+                        placeholder="Seating Number">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ASSIGNED TO
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <!-- Assigned To -->
+
+<label>Assigned To</label>
+
+<select name="Assigned_To">
+
+    <option value="">Not Assigned</option>
+
+    {% for user in users %}
+
+        <option
+            value="{{ user[1] }}"
+            {% if asset and asset[6] == user[1] %}
+                selected
+            {% endif %}
+        >
+
+            {{ user[0] }} - {{ user[1] }}
+
+        </option>
+
+    {% endfor %}
+
+</select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LOCATION
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>Location</label>
+
+                    <input
+                        type="text"
+                        name="location"
+
+                        value="{{ asset[8] if asset else '' }}"
+
+                        placeholder="Location">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LICENSE
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>License</label>
+
+                    <input
+                        type="text"
+                        name="license"
+
+                        value="{{ asset[9] if asset else '' }}"
+
+                        placeholder="License Period">
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CONDITION
+                ================================================== -->
+
+                <div class="form-group">
+
+                    <label>Condition</label>
+
+
+                    <select name="condition">
+
+
+                        <option
+                            value="Good"
+
+                            {% if asset and asset[10] == 'Good' %}
+                                selected
+                            {% endif %}
+                        >
+
+                            Good
+
+                        </option>
+
+
+                        <option
+                            value="Damaged"
+
+                            {% if asset and asset[10] == 'Damaged' %}
+                                selected
+                            {% endif %}
+                        >
+
+                            Damaged
+
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SUBMIT
+            ================================================== -->
+
+            <button
+                class="submit"
+                type="submit"
+            >
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+
+                {% if asset %}
+
+                    Update Asset
+
+                {% else %}
+
+                    Add Asset
+
+                {% endif %}
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
+

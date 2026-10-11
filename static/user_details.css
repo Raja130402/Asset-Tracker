@@ -1,0 +1,346 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+body {
+    background: #F2929C;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.main {
+    width: 90%;
+    max-width: 850px;
+    margin: 30px auto;
+}
+
+
+/* =====================================================
+   NAVIGATION BAR
+===================================================== */
+
+.nav-bar {
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto 25px auto;
+
+    background: #ffffff;
+
+    padding: 18px 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.nav-bar nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.nav-bar h1 {
+    color: #722F37;
+
+    font-size: 26px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back {
+    border: none;
+
+    background: #722F37;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.back:hover {
+    background: #F36B67;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   USER FORM CARD
+===================================================== */
+
+.user-form {
+
+    background: #ffffff;
+
+    width: 100%;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   FORM TITLE
+===================================================== */
+
+.user-form h2 {
+
+    color: #722F37;
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+
+.user-form p {
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group {
+
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #444;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   INPUT + SELECT
+===================================================== */
+
+.user-form input,
+.user-form select {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+.user-form input:focus,
+.user-form select:focus {
+
+    border-color: #F36B67;
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(243, 107, 103, 0.15);
+}
+
+
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
+
+.user-form input::placeholder {
+
+    color: #aaa;
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   FULL WIDTH FIELD
+===================================================== */
+
+.full-width {
+
+    grid-column: span 2;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.submit {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 13px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #F36B67;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.submit:hover {
+
+    background: #722F37;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.success {
+
+    background: #e8f7ed;
+
+    color: #218838;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.error {
+
+    background: #fdeaea;
+
+    color: #dc3545;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .nav-bar,
+    .main {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+
+    .user-form {
+        padding: 25px;
+    }
+
+    .nav-bar h1 {
+        font-size: 21px;
+    }
+}

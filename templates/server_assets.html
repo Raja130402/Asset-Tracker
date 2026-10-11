@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Server Assets</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='server_assets.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+                Server Assets
+            </h1>
+
+            <p>
+                Manage all registered server assets
+            </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <a href="{{ url_for('system_details') }}"
+               class="add-button">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Assets
+
+            </a>
+
+
+            <a href="{{ url_for('add_server') }}"
+               class="add-button">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Server
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TABLE
+    ========================================== -->
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Product ID</th>
+
+                    <th>Server Name</th>
+
+                    <th>Brand</th>
+
+                    <th>Model</th>
+
+                    <th>Serial Number</th>
+
+                    <th>IP Address</th>
+
+                    <th>Data Center</th>
+
+                    <th>Rack</th>
+
+                    <th>Condition</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for server in servers %}
+
+                <tr class="clickable-row">
+
+                    <td>
+
+                        <a href="{{ url_for(
+                            'server_details',
+                            id=server[0]
+                        ) }}"
+                           class="product-link">
+
+                            {{ server[1] }}
+
+                        </a>
+
+                    </td>
+
+
+                    <td>
+                        {{ server[2] }}
+                    </td>
+
+
+                    <td>
+                        {{ server[3] }}
+                    </td>
+
+
+                    <td>
+                        {{ server[4] }}
+                    </td>
+
+
+                    <td>
+                        {{ server[5] }}
+                    </td>
+
+
+                    <td>
+                        {{ server[15] or '-' }}
+                    </td>
+
+
+                    <td>
+                        {{ server[18] or '-' }}
+                    </td>
+
+
+                    <td>
+                        {{ server[19] or '-' }}
+                    </td>
+
+
+                    <td>
+
+                        {% if server[22]|lower|trim == 'good' %}
+
+                            <span class="status good">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Good
+
+                            </span>
+
+                        {% elif server[22]|lower|trim == 'damaged' %}
+
+                            <span class="status damaged">
+
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                                Damaged
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="status">
+
+                                {{ server[22] or '-' }}
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        {% if server[23]|lower|trim == 'available' %}
+
+                            <span class="status good">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Available
+
+                            </span>
+
+                        {% elif server[23]|lower|trim == 'assigned' %}
+
+                            <span class="status assigned">
+
+                                <i class="fa-solid fa-user-check"></i>
+
+                                Assigned
+
+                            </span>
+
+                        {% elif server[23]|lower|trim == 'under maintenance' %}
+
+                            <span class="status maintenance">
+
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                                Under Maintenance
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="status">
+
+                                {{ server[23] or '-' }}
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="10"
+                        class="no-data">
+
+                        No server assets found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

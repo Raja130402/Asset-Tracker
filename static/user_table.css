@@ -1,0 +1,659 @@
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    background: #f5f7fb;
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar {
+    width: 95%;
+    margin: 25px auto;
+
+    background: #ffffff;
+
+    padding: 18px 25px;
+
+    border-radius: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.title-icon {
+    width: 50px;
+    height: 50px;
+
+    background: #f36b67;
+
+    color: white;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+
+.page-title h1 {
+    font-size: 26px;
+    color: #722f37;
+    margin-bottom: 3px;
+}
+
+
+.page-title p {
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TOP ACTIONS
+========================================================= */
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.top-actions a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   DASHBOARD BUTTON
+========================================================= */
+
+.back-btn {
+    background: #eeeeee;
+
+    color: #444;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+.back-btn:hover {
+    background: #dddddd;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ADD USER BUTTON
+========================================================= */
+
+.add-btn {
+    background: #f36b67;
+
+    color: white;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+.add-btn:hover {
+    background: #d95552;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-btn {
+    background: #722f37;
+
+    color: white;
+
+    padding: 10px 17px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+.logout-btn:hover {
+    background: #541f26;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.table-card {
+    width: 95%;
+
+    margin: 0 auto 30px;
+
+    background: #ffffff;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.table-header {
+    padding: 25px 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.table-header h2 {
+    color: #333;
+
+    font-size: 21px;
+
+    margin-bottom: 5px;
+}
+
+
+.table-header p {
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.search-box {
+    width: 260px;
+
+    height: 40px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 12px;
+
+    background: #fafafa;
+
+    transition: 0.3s;
+}
+
+
+.search-box i {
+    color: #999;
+
+    margin-right: 8px;
+}
+
+
+.search-box input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 14px;
+}
+
+
+.search-box:focus-within {
+    border-color: #f36b67;
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(243, 107, 103, 0.12);
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+#userTable {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 950px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+#userTable thead {
+    background: #f8f9fc;
+}
+
+
+#userTable th {
+    padding: 15px 18px;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #666;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+#userTable td {
+    padding: 15px 18px;
+
+    font-size: 14px;
+
+    color: #444;
+
+    border-bottom: 1px solid #eeeeee;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ROW HOVER
+========================================================= */
+
+#userTable tbody tr {
+    transition: 0.2s;
+}
+
+
+#userTable tbody tr:hover {
+    background: #fff7f7;
+}
+
+
+/* =========================================================
+   S.NO
+========================================================= */
+
+.id-cell {
+    width: 70px;
+
+    font-weight: 600;
+
+    color: #722f37 !important;
+}
+
+
+/* =========================================================
+   USER NAME
+========================================================= */
+
+.user-name {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+
+.user-name i {
+    color: #f36b67;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ASSIGNED ASSET
+========================================================= */
+
+.assigned-asset {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    background: #eef5ff;
+
+    color: #3b6ea8;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   NOT ASSIGNED
+========================================================= */
+
+.not-assigned {
+    color: #999;
+
+    font-size: 13px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.edit-btn {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: #fff4e5;
+
+    color: #e58b00;
+
+    border-radius: 7px;
+
+    transition: 0.25s;
+}
+
+
+.edit-btn:hover {
+    background: #e58b00;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.delete-btn {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: #ffeaea;
+
+    color: #e53935;
+
+    border-radius: 7px;
+
+    transition: 0.25s;
+}
+
+
+.delete-btn:hover {
+    background: #e53935;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   NO DATA
+========================================================= */
+
+.no-data {
+    text-align: center !important;
+
+    padding: 50px !important;
+
+    color: #999 !important;
+}
+
+
+.no-data i {
+    display: block;
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+
+    color: #cccccc;
+}
+
+
+.no-data p {
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #cccccc;
+
+    border-radius: 10px;
+}
+
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .top-bar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .top-actions {
+        width: 100%;
+
+        flex-wrap: wrap;
+    }
+
+
+    .table-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .search-box {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        width: 94%;
+
+        padding: 15px;
+    }
+
+
+    .page-title h1 {
+        font-size: 22px;
+    }
+
+
+    .title-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+
+    .top-actions {
+        gap: 7px;
+    }
+
+
+    .top-actions a {
+        padding: 9px 12px;
+
+        font-size: 13px;
+    }
+
+
+    .table-card {
+        width: 94%;
+    }
+
+
+    .table-header {
+        padding: 20px;
+    }
+
+}
+

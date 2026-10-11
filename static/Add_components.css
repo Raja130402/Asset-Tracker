@@ -1,0 +1,475 @@
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+    background-color: #F2929C;
+
+    min-height: 100vh;
+
+    padding: 25px;
+}
+
+
+/* =====================================================
+   NAVIGATION BAR
+===================================================== */
+
+.nav-bar {
+    width: 95%;
+
+    margin: 0 auto 25px auto;
+
+    background-color: #ffffff;
+
+    padding: 18px 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.nav-bar nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.nav-bar h1 {
+    color: #722F37;
+
+    font-size: 27px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   NAVIGATION BUTTONS
+===================================================== */
+
+.back,
+.logout {
+
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.back {
+    background-color: #722F37;
+}
+
+
+.logout {
+    background-color: #F36B67;
+}
+
+
+.back:hover,
+.logout:hover {
+
+    transform: translateY(-2px);
+
+    background-color: #D85A62;
+}
+
+
+/* Remove underline from button links */
+
+.nav-bar a {
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main {
+
+    width: 95%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.asset-form {
+
+    background-color: #ffffff;
+
+    padding: 35px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   FORM HEADER
+===================================================== */
+
+.form-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+.form-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #F36B67;
+
+    color: white;
+
+    border-radius: 12px;
+
+    font-size: 24px;
+}
+
+
+.form-header h2 {
+
+    color: #722F37;
+
+    font-size: 25px;
+
+    margin-bottom: 5px;
+}
+
+
+.form-header p {
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px 25px;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.form-group label {
+
+    color: #444;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    height: 44px;
+
+    padding: 10px 13px;
+
+    border: 1px solid #d9d9d9;
+
+    border-radius: 8px;
+
+    background-color: #fafafa;
+
+    color: #333;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+/* =====================================================
+   INPUT FOCUS
+===================================================== */
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: #F36B67;
+
+    background-color: #ffffff;
+
+    box-shadow: 0 0 0 3px rgba(243, 107, 103, 0.15);
+}
+
+
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
+
+.form-group input::placeholder {
+
+    color: #999;
+}
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+.form-group select {
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.submit {
+
+    width: 100%;
+
+    height: 46px;
+
+    margin-top: 30px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #F36B67;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.submit:hover {
+
+    background-color: #722F37;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(114, 47, 55, 0.25);
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.error {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background-color: #fdeaea;
+
+    color: #dc3545;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.success {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background-color: #e8f7ed;
+
+    color: #218838;
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    body {
+        padding: 15px;
+    }
+
+
+    .nav-bar,
+    .main {
+
+        width: 100%;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .asset-form {
+
+        padding: 25px;
+    }
+
+
+    .nav-bar h1 {
+
+        font-size: 21px;
+    }
+
+
+    .back,
+    .logout {
+
+        padding: 8px 12px;
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+    .nav-bar nav {
+
+        gap: 10px;
+    }
+
+
+    .nav-bar h1 {
+
+        font-size: 18px;
+    }
+
+
+    .form-header h2 {
+
+        font-size: 21px;
+    }
+
+
+    .form-header p {
+
+        font-size: 13px;
+    }
+
+}
+

@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Asset Tracker Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='dashboard.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     APPLICATION LAYOUT
+====================================================== -->
+
+<div class="app-layout">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-logo">
+
+            <i class="fa-solid fa-boxes-stacked"></i>
+
+            <div>
+
+                <h2>Asset</h2>
+
+                <span>Tracker</span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MENU -->
+
+        <div class="sidebar-menu">
+
+
+            <p class="menu-title">
+                MAIN MENU
+            </p>
+
+
+
+            <!-- DASHBOARD -->
+
+            <a href="{{ url_for('dashboard') }}"
+               class="side-link active">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+
+            <!-- ASSETS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-computer"></i>
+
+                <span>Assets</span>
+
+            </a>
+
+
+
+            <!-- USERS -->
+
+            <a href="{{ url_for('user_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-users"></i>
+
+                <span>Users</span>
+
+            </a>
+
+
+
+            <!-- REPORTS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                <span>Reports</span>
+
+            </a>
+
+
+
+            <!-- SCRAP -->
+
+            <a href="{{ url_for('scrab_details') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-recycle"></i>
+
+                <span>Scrap</span>
+
+            </a>
+
+
+
+            <!-- SYSTEM -->
+
+            <p class="menu-title menu-space">
+                SYSTEM
+            </p>
+
+
+
+            <!-- SETTINGS -->
+
+            <a href="{{ url_for('adminpage') }}"
+               class="side-link">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <a href="{{ url_for('login') }}"
+               class="side-link logout-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN DASHBOARD
+    ================================================== -->
+
+    <main class="dashboard-content">
+
+
+        <!-- =============================================
+             WELCOME / PAGE HEADER
+        ============================================== -->
+
+        <div class="dashboard-header">
+
+
+            <div>
+
+                <h2>Dashboard</h2>
+
+                <p>
+                    Overview of your organization's assets
+                </p>
+
+            </div>
+
+
+
+            <!-- EXPORT -->
+
+            <a href="{{ url_for('export_excel') }}"
+               class="export-btn">
+
+                <i class="fa-solid fa-file-excel"></i>
+
+                Export Excel
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             STATISTICS
+        ============================================== -->
+
+        <div class="stats-grid">
+
+
+            <!-- TOTAL ASSETS -->
+
+            <div class="stat-card total">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <span>Total Assets</span>
+
+                    <h2>{{ total_assets }}</h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- GOOD ASSETS -->
+
+            <div class="stat-card good">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <span>Good Assets</span>
+
+                    <h2>{{ good_assets }}</h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DAMAGED ASSETS -->
+
+            <div class="stat-card damage">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <span>Damaged Assets</span>
+
+                    <h2>{{ damaged_assets }}</h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ASSIGNED ASSETS -->
+
+            <div class="stat-card assigned">
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
+
+
+                <div class="stat-info">
+
+                    <span>Assigned Assets</span>
+
+                    <h2>{{ assigned_assets }}</h2>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             ASSET MANAGEMENT HEADER
+        ============================================== -->
+
+        <div class="section-header">
+
+
+            <div>
+
+                <h2>Asset Management</h2>
+
+                <p>
+                    Manage your assets, users and reports
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             MANAGEMENT CARDS
+        ============================================== -->
+
+        <div class="cards">
+
+
+            <!-- SYSTEM DETAILS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="management-card">
+
+
+                <div class="card-image">
+
+                    <img
+                        src="{{ url_for('static', filename='img/system.jpg') }}"
+                        alt="System Details">
+
+                </div>
+
+
+
+                <div class="card-content">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-computer"></i>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h2>System Details</h2>
+
+                        <p>
+                            View and manage system assets
+                        </p>
+
+                    </div>
+
+
+
+                    <i class="fa-solid fa-arrow-right card-arrow"></i>
+
+
+                </div>
+
+
+            </a>
+
+
+
+            <!-- USER DETAILS -->
+
+            <a href="{{ url_for('user_details') }}"
+               class="management-card">
+
+
+                <div class="card-image">
+
+                    <img
+                        src="{{ url_for('static', filename='img/user.jpg') }}"
+                        alt="User Details">
+
+                </div>
+
+
+
+                <div class="card-content">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h2>User Details</h2>
+
+                        <p>
+                            Manage employees and assignments
+                        </p>
+
+                    </div>
+
+
+
+                    <i class="fa-solid fa-arrow-right card-arrow"></i>
+
+
+                </div>
+
+
+            </a>
+
+
+
+            <!-- LICENSE DETAILS -->
+
+            <a href="{{ url_for('system_details') }}"
+               class="management-card">
+
+
+                <div class="card-image">
+
+                    <img
+                        src="{{ url_for('static', filename='img/reports.jpg') }}"
+                        alt="License Details">
+
+                </div>
+
+
+
+                <div class="card-content">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-file-contract"></i>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h2>License Details</h2>
+
+                        <p>
+                            Track software and license information
+                        </p>
+
+                    </div>
+
+
+
+                    <i class="fa-solid fa-arrow-right card-arrow"></i>
+
+
+                </div>
+
+
+            </a>
+
+
+
+            <!-- SCRAP DETAILS -->
+
+            <a href="{{ url_for('scrab_details') }}"
+               class="management-card">
+
+
+                <div class="card-image">
+
+                    <img
+                        src="{{ url_for('static', filename='img/scrab.jpg') }}"
+                        alt="Scrap Details">
+
+                </div>
+
+
+
+                <div class="card-content">
+
+
+                    <div class="card-icon">
+
+                        <i class="fa-solid fa-recycle"></i>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <h2>Scrap Details</h2>
+
+                        <p>
+                            View damaged and scrap assets
+                        </p>
+
+                    </div>
+
+
+
+                    <i class="fa-solid fa-arrow-right card-arrow"></i>
+
+
+                </div>
+
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             QUICK ACTIONS
+        ============================================== -->
+
+        <div class="quick-section">
+
+
+            <h2>Quick Actions</h2>
+
+
+
+            <div class="quick-grid">
+
+
+                <!-- ADD ASSET -->
+
+                <a href="{{ url_for('Add_components') }}"
+                   class="quick-card">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Add Asset</span>
+
+                </a>
+
+
+
+                <!-- ADD USER -->
+
+                <a href="{{ url_for('Add_user') }}"
+                   class="quick-card">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    <span>Add User</span>
+
+                </a>
+
+
+
+                <!-- ADD SERVER -->
+
+                <a href="{{ url_for('add_server') }}"
+                   class="quick-card">
+
+                    <i class="fa-solid fa-server"></i>
+
+                    <span>Add Server</span>
+
+                </a>
+
+
+
+                <!-- EXPORT -->
+
+                <a href="{{ url_for('export_excel') }}"
+                   class="quick-card">
+
+                    <i class="fa-solid fa-file-excel"></i>
+
+                    <span>Export Report</span>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>
+

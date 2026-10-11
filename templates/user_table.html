@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User List</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='user_table.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP NAVIGATION
+====================================================== -->
+
+<div class="top-bar">
+
+    <div class="page-title">
+
+        <div class="title-icon">
+
+            <i class="fa-solid fa-users"></i>
+
+        </div>
+
+        <div>
+
+            <h1>Users</h1>
+
+            <p>Manage registered users</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <a href="{{ url_for('dashboard') }}"
+           class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="{{ url_for('Add_user') }}"
+           class="add-btn">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Add User
+
+        </a>
+
+
+        <a href="{{ url_for('login') }}"
+           class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     USER TABLE CONTAINER
+====================================================== -->
+
+<div class="table-card">
+
+
+    <div class="table-header">
+
+        <div>
+
+            <h2>User List</h2>
+
+            <p>
+                View and manage registered users
+            </p>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search users...">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         TABLE
+    ================================================== -->
+
+    <div class="table-container">
+
+        <table id="userTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>S.No</th>
+
+                    <th>Employee Code</th>
+
+                    <th>Employee Name</th>
+
+                    <th>TL Name</th>
+
+                    <th>Team Name</th>
+
+                    <th>Assigned Asset</th>
+
+                    <th>Location</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            {% for row in data %}
+
+                <tr>
+
+                    <!-- S.NO -->
+
+                    <td class="id-cell">
+
+                        {{ loop.index }}
+
+                    </td>
+
+
+                    <!-- EMPLOYEE CODE -->
+
+                    <td>
+
+                        {{ row[1] }}
+
+                    </td>
+
+
+                    <!-- EMPLOYEE NAME -->
+
+                    <td>
+
+                        <span class="user-name">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            {{ row[2] }}
+
+                        </span>
+
+                    </td>
+
+
+                    <!-- TL NAME -->
+
+                    <td>
+
+                        {{ row[3] }}
+
+                    </td>
+
+
+                    <!-- TEAM NAME -->
+
+                    <td>
+
+                        {{ row[4] }}
+
+                    </td>
+
+
+                    <!-- ASSIGNED ASSET -->
+
+                    <td>
+
+                        {% if row[5] %}
+
+                            <span class="assigned-asset">
+
+                                {{ row[5] }}
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="not-assigned">
+
+                                Not Assigned
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- LOCATION -->
+
+                    <td>
+
+                        {{ row[6] }}
+
+                    </td>
+
+
+                    <!-- ACTION -->
+
+                    <td>
+
+                        <div class="action-buttons">
+
+
+                            <a href="{{ url_for('edit_user', id=row[0]) }}"
+                               class="edit-btn"
+                               title="Edit User">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </a>
+
+
+                            <a href="{{ url_for('delete_user', id=row[0]) }}"
+                               class="delete-btn"
+                               title="Delete User"
+                               onclick="return confirm('Delete this user?')">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </a>
+
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+
+            {% else %}
+
+                <tr>
+
+                    <td colspan="8"
+                        class="no-data">
+
+                        <i class="fa-solid fa-users-slash"></i>
+
+                        <p>No users found.</p>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SEARCH
+====================================================== -->
+
+<script>
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const table =
+    document.getElementById("userTable");
+
+searchInput.addEventListener("keyup", function () {
+
+    const searchValue =
+        this.value.toLowerCase();
+
+    const rows =
+        table.querySelectorAll("tbody tr");
+
+    rows.forEach(function (row) {
+
+        const rowText =
+            row.textContent.toLowerCase();
+
+        if (rowText.includes(searchValue)) {
+
+            row.style.display = "";
+
+        } else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+
+</body>
+
+</html>

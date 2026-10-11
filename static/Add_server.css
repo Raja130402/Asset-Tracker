@@ -1,0 +1,339 @@
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+    width: 95%;
+    margin: 20px auto;
+
+    background-color: #ffffff;
+
+    padding: 20px 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+nav h1 {
+    font-size: 26px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #333;
+}
+
+
+nav h1 i {
+    color: #3498db;
+}
+
+
+/* =========================================================
+   MAIN FORM CONTAINER
+========================================================= */
+
+.add {
+    width: 95%;
+
+    max-width: 900px;
+
+    margin: 25px auto 40px;
+
+    background-color: #ffffff;
+
+    padding: 30px 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   FORM TITLE
+========================================================= */
+
+.add h2 {
+    margin-bottom: 25px;
+
+    font-size: 24px;
+
+    color: #333;
+
+    border-bottom: 2px solid #eeeeee;
+
+    padding-bottom: 12px;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.add h3 {
+    margin-top: 30px;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 8px;
+
+    font-size: 18px;
+
+    color: #3498db;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+.add label {
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #444;
+}
+
+
+/* =========================================================
+   REQUIRED STAR
+========================================================= */
+
+.required {
+    color: red;
+
+    font-weight: bold;
+
+    margin-left: 3px;
+}
+
+
+/* =========================================================
+   INPUTS AND SELECTS
+========================================================= */
+
+.add input,
+.add select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d6d9dc;
+
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    font-size: 14px;
+
+    color: #333;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.add input::placeholder {
+    color: #999;
+}
+
+
+/* =========================================================
+   NORMAL FOCUS
+========================================================= */
+
+.add input:focus,
+.add select:focus {
+    border-color: #3498db;
+
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+
+/* =========================================================
+   REQUIRED FIELD - EMPTY
+========================================================= */
+
+/*
+   The browser checks required fields when
+   the user submits the form.
+*/
+
+.add input:required:invalid {
+    border-color: #e74c3c;
+}
+
+
+/* =========================================================
+   REQUIRED FIELD - VALID
+========================================================= */
+
+.add input:required:valid {
+    border-color: #d6d9dc;
+}
+
+
+/* =========================================================
+   INVALID FIELD WHEN FOCUSED
+========================================================= */
+
+.add input:required:invalid:focus {
+    border-color: #e74c3c;
+
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
+}
+
+
+/* =========================================================
+   REQUIRED SELECT
+========================================================= */
+
+.add select:required:invalid {
+    border-color: #e74c3c;
+}
+
+
+/* =========================================================
+   VALID SELECT
+========================================================= */
+
+.add select:required:valid {
+    border-color: #d6d9dc;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.submit {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 13px 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #3498db;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.submit:hover {
+    background-color: #2980b9;
+}
+
+
+/* =========================================================
+   BUTTON CLICK
+========================================================= */
+
+.submit:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 600px) {
+
+    nav {
+        width: 92%;
+
+        padding: 16px 20px;
+    }
+
+
+    nav h1 {
+        font-size: 21px;
+    }
+
+
+    .add {
+        width: 92%;
+
+        padding: 25px 20px;
+    }
+
+
+    .add h2 {
+        font-size: 21px;
+    }
+
+
+    .add h3 {
+        font-size: 17px;
+    }
+
+
+    .add input,
+    .add select {
+        padding: 11px 12px;
+    }
+
+}
+

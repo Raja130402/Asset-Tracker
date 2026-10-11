@@ -1,0 +1,285 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 35px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    color: #333;
+
+    margin-bottom: 6px;
+}
+
+.page-header p {
+    font-size: 14px;
+    color: #777;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.add-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 18px;
+
+    background-color: #722F37;
+
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: #5c252c;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+========================================================= */
+
+.table-container {
+    width: 100%;
+
+    background-color: white;
+
+    border: 1px solid #e8e8e8;
+
+    border-radius: 12px;
+
+    overflow-x: auto;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 1150px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+thead {
+    background-color: #fafafa;
+}
+
+th {
+    padding: 14px 16px;
+
+    text-align: left;
+
+    font-size: 12px;
+
+    color: #666;
+
+    font-weight: 700;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+td {
+    padding: 14px 16px;
+
+    font-size: 13px;
+
+    color: #444;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    white-space: nowrap;
+}
+
+tbody tr {
+    transition: 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #faf7f8;
+}
+
+
+/* =========================================================
+   PRODUCT LINK
+========================================================= */
+
+.product-link {
+    color: #722F37;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.product-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 9px;
+
+    border-radius: 18px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.status.good {
+    background-color: #ecfdf3;
+    color: #15803d;
+}
+
+.status.damaged {
+    background-color: #fff1f2;
+    color: #dc2626;
+}
+
+.status.assigned {
+    background-color: #fcebed;
+    color: #722F37;
+}
+
+.status.maintenance {
+    background-color: #fff7ed;
+    color: #c2410c;
+}
+
+
+/* =========================================================
+   NO DATA
+========================================================= */
+
+.no-data {
+    text-align: center;
+
+    padding: 45px;
+
+    color: #888;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 20px 12px;
+    }
+
+    .page-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .add-button {
+        flex: 1;
+    }
+}

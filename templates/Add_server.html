@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Server</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='Add_server.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* Required field indicator */
+        .required {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Required fields */
+        input:required:invalid {
+            border: 2px solid #e74c3c;
+        }
+
+        /* Valid fields */
+        input:required:valid {
+            border: 1px solid #ccc;
+        }
+
+        /* Focus on invalid field */
+        input:required:invalid:focus {
+            outline: 2px solid #e74c3c;
+        }
+
+        /* Required select fields */
+        select:required:invalid {
+            border: 2px solid #e74c3c;
+        }
+
+        select:required:valid {
+            border: 1px solid #ccc;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <h1>
+
+        <i class="fa-solid fa-server"></i>
+
+        Add Server
+
+    </h1>
+
+</nav>
+
+
+
+<!-- =========================
+     SERVER FORM
+========================= -->
+
+<div class="add">
+
+    <h2>Server Details</h2>
+
+
+    <form method="POST">
+
+
+        <!-- =========================
+             CATEGORY
+        ========================= -->
+
+        <label>Category</label>
+
+        <select name="list">
+
+            <option value="Server">
+                Server
+            </option>
+
+        </select>
+
+
+
+        <!-- =========================
+             BASIC INFORMATION
+        ========================= -->
+
+        <h3>Basic Information</h3>
+
+
+        <!-- Product ID -->
+
+        <label>Product ID</label>
+
+        <input
+            type="text"
+            name="product_id"
+            value="{{ asset[2] if asset else '' }}"
+            placeholder="Product ID">
+
+
+
+        <!-- Server Name -->
+
+        <label>
+            Server Name
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="server_name"
+            value="{{ asset[3] if asset else '' }}"
+            placeholder="Server Name"
+            required>
+
+
+
+        <!-- Brand -->
+
+        <label>
+            Brand
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="brand"
+            value="{{ asset[4] if asset else '' }}"
+            placeholder="Brand"
+            required>
+
+
+
+        <!-- Model -->
+
+        <label>
+            Model
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="model"
+            value="{{ asset[5] if asset else '' }}"
+            placeholder="Model"
+            required>
+
+
+
+        <!-- Serial Number -->
+
+        <label>
+            Serial Number
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="serial_number"
+            value="{{ asset[6] if asset else '' }}"
+            placeholder="Serial Number"
+            required>
+
+
+
+        <!-- =========================
+             HARDWARE
+        ========================= -->
+
+        <h3>Hardware</h3>
+
+
+        <!-- CPU -->
+
+        <label>
+            CPU
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="cpu"
+            value="{{ asset[7] if asset else '' }}"
+            placeholder="CPU"
+            required>
+
+
+
+        <!-- CPU Cores -->
+
+        <label>CPU Cores</label>
+
+        <input
+            type="text"
+            name="cpu_cores"
+            value="{{ asset[8] if asset else '' }}"
+            placeholder="CPU Cores">
+
+
+
+        <!-- RAM -->
+
+        <label>
+            RAM
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="ram"
+            value="{{ asset[9] if asset else '' }}"
+            placeholder="RAM"
+            required>
+
+
+
+        <!-- Storage -->
+
+        <label>
+            Storage
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="storage"
+            value="{{ asset[10] if asset else '' }}"
+            placeholder="Storage"
+            required>
+
+
+
+        <!-- Storage Type -->
+
+        <label>Storage Type</label>
+
+        <input
+            type="text"
+            name="storage_type"
+            value="{{ asset[11] if asset else '' }}"
+            placeholder="Storage Type">
+
+
+
+        <!-- RAID -->
+
+        <label>RAID</label>
+
+        <input
+            type="text"
+            name="raid"
+            value="{{ asset[12] if asset else '' }}"
+            placeholder="RAID">
+
+
+
+        <!-- =========================
+             OPERATING SYSTEM
+        ========================= -->
+
+        <h3>Operating System</h3>
+
+
+        <!-- Operating System -->
+
+        <label>
+            Operating System
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="operating_system"
+            value="{{ asset[13] if asset else '' }}"
+            placeholder="Operating System"
+            required>
+
+
+
+        <!-- OS Version -->
+
+        <label>OS Version</label>
+
+        <input
+            type="text"
+            name="os_version"
+            value="{{ asset[14] if asset else '' }}"
+            placeholder="OS Version">
+
+
+
+        <!-- =========================
+             NETWORK
+        ========================= -->
+
+        <h3>Network</h3>
+
+
+        <!-- Hostname -->
+
+        <label>
+            Hostname
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="hostname"
+            value="{{ asset[15] if asset else '' }}"
+            placeholder="Hostname"
+            required>
+
+
+
+        <!-- IP Address -->
+
+        <label>
+            IP Address
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="ip_address"
+            value="{{ asset[16] if asset else '' }}"
+            placeholder="IP Address"
+            required>
+
+
+
+        <!-- MAC Address -->
+
+        <label>
+            MAC Address
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="mac_address"
+            value="{{ asset[17] if asset else '' }}"
+            placeholder="MAC Address"
+            required>
+
+
+
+        <!-- Management IP -->
+
+        <label>Management IP</label>
+
+        <input
+            type="text"
+            name="management_ip"
+            value="{{ asset[18] if asset else '' }}"
+            placeholder="Management IP">
+
+
+
+        <!-- =========================
+             LOCATION
+        ========================= -->
+
+        <h3>Location</h3>
+
+
+        <!-- Data Center -->
+
+        <label>
+            Data Center
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="data_center"
+            value="{{ asset[19] if asset else '' }}"
+            placeholder="Data Center"
+            required>
+
+
+
+        <!-- Rack -->
+
+        <label>
+            Rack
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="rack"
+            value="{{ asset[20] if asset else '' }}"
+            placeholder="Rack"
+            required>
+
+
+
+        <!-- Rack Position -->
+
+        <label>Rack Position</label>
+
+        <input
+            type="text"
+            name="rack_position"
+            value="{{ asset[21] if asset else '' }}"
+            placeholder="Rack Position">
+
+
+
+        <!-- =========================
+             ASSIGNMENT
+        ========================= -->
+
+        <h3>Assignment</h3>
+
+
+        <!-- Assigned To -->
+
+        <label>Assigned To</label>
+
+        <input
+            type="text"
+            name="assigned_to"
+            value="{{ asset[22] if asset else '' }}"
+            placeholder="Assigned To">
+
+
+
+        <!-- =========================
+             CONDITION
+        ========================= -->
+
+        <label>
+            Condition
+            <span class="required">*</span>
+        </label>
+
+        <select name="condition" required>
+
+            <option value="">
+                Select Condition
+            </option>
+
+            <option value="Good"
+                {% if asset and asset[23] == 'Good' %}
+                selected
+                {% endif %}>
+                Good
+            </option>
+
+            <option value="Damaged"
+                {% if asset and asset[23] == 'Damaged' %}
+                selected
+                {% endif %}>
+                Damaged
+            </option>
+
+        </select>
+
+
+
+        <!-- =========================
+             STATUS
+        ========================= -->
+
+        <label>
+            Status
+            <span class="required">*</span>
+        </label>
+
+        <select name="status" required>
+
+            <option value="">
+                Select Status
+            </option>
+
+            <option value="Active"
+                {% if asset and asset[24] == 'Active' %}
+                selected
+                {% endif %}>
+                Active
+            </option>
+
+            <option value="Spare"
+                {% if asset and asset[24] == 'Spare' %}
+                selected
+                {% endif %}>
+                Spare
+            </option>
+
+            <option value="Repair"
+                {% if asset and asset[24] == 'Repair' %}
+                selected
+                {% endif %}>
+                Repair
+            </option>
+
+            <option value="Scrap"
+                {% if asset and asset[24] == 'Scrap' %}
+                selected
+                {% endif %}>
+                Scrap
+            </option>
+
+        </select>
+
+
+
+        <!-- =========================
+             WARRANTY
+        ========================= -->
+
+        <label>Warranty</label>
+
+        <input
+            type="text"
+            name="warranty"
+            value="{{ asset[25] if asset else '' }}"
+            placeholder="Warranty">
+
+
+
+        <!-- =========================
+             REMARKS
+        ========================= -->
+
+        <label>Remarks</label>
+
+        <input
+            type="text"
+            name="remarks"
+            value="{{ asset[26] if asset else '' }}"
+            placeholder="Remarks">
+
+
+
+        <!-- =========================
+             SUBMIT
+        ========================= -->
+
+        <button
+            class="submit"
+            type="submit">
+
+            {% if asset %}
+                Update Server
+            {% else %}
+                Add Server
+            {% endif %}
+
+        </button>
+
+
+    </form>
+
+</div>
+
+
+</body>
+
+</html>

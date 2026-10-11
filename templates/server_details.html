@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Server Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='computer_details.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <div class="page-header">
+
+        <div class="page-title">
+
+            <div class="title-icon">
+
+                <i class="fa-solid fa-server"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Server Details
+                </h1>
+
+                <p>
+                    View server asset information
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <a href="{{ url_for('server_assets') }}"
+               class="action-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Servers
+
+            </a>
+
+
+            <a href="{{ url_for('add_server') }}"
+               class="action-btn">
+
+                <i class="fa-solid fa-pen"></i>
+
+                Edit
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         SUMMARY
+    ================================================== -->
+
+    <div class="summary-card">
+
+
+        <div class="summary-item">
+
+            <span>
+                Product ID
+            </span>
+
+            <strong>
+                {{ server[1] }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <span>
+                Server Name
+            </span>
+
+            <strong>
+                {{ server[2] }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <span>
+                Brand
+            </span>
+
+            <strong>
+                {{ server[3] }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-item">
+
+            <span>
+                Status
+            </span>
+
+            <strong>
+                {{ server[23] or '-' }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         SERVER INFORMATION
+    ================================================== -->
+
+    <div class="details-card">
+
+
+        <div class="card-header">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-server"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Server Information
+                </h2>
+
+                <p>
+                    Server identification and management details
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail-item">
+
+                <span>Serial Number</span>
+
+                <strong>
+                    {{ server[5] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Model</span>
+
+                <strong>
+                    {{ server[4] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Assigned To</span>
+
+                <strong>
+                    {{ server[21] or 'Not Assigned' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Condition</span>
+
+                <strong>
+                    {{ server[22] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Warranty</span>
+
+                <strong>
+                    {{ server[24] or '-' }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         HARDWARE
+    ================================================== -->
+
+    <div class="details-card">
+
+
+        <div class="card-header">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-microchip"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Hardware
+                </h2>
+
+                <p>
+                    Server hardware specifications
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail-item">
+
+                <span>CPU</span>
+
+                <strong>
+                    {{ server[6] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>CPU Cores</span>
+
+                <strong>
+                    {{ server[7] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>RAM</span>
+
+                <strong>
+                    {{ server[8] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Storage</span>
+
+                <strong>
+                    {{ server[9] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Storage Type</span>
+
+                <strong>
+                    {{ server[10] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>RAID</span>
+
+                <strong>
+                    {{ server[11] or '-' }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         OPERATING SYSTEM
+    ================================================== -->
+
+    <div class="details-card">
+
+
+        <div class="card-header">
+
+            <div class="card-icon">
+
+                <i class="fa-brands fa-windows"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Operating System
+                </h2>
+
+                <p>
+                    Server operating system information
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail-item">
+
+                <span>Operating System</span>
+
+                <strong>
+                    {{ server[12] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>OS Version</span>
+
+                <strong>
+                    {{ server[13] or '-' }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         NETWORK
+    ================================================== -->
+
+    <div class="details-card">
+
+
+        <div class="card-header">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-network-wired"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Network
+                </h2>
+
+                <p>
+                    Server network configuration
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail-item">
+
+                <span>Hostname</span>
+
+                <strong>
+                    {{ server[14] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>IP Address</span>
+
+                <strong>
+                    {{ server[15] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>MAC Address</span>
+
+                <strong>
+                    {{ server[16] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Management IP</span>
+
+                <strong>
+                    {{ server[17] or '-' }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         DATA CENTER
+    ================================================== -->
+
+    <div class="details-card">
+
+
+        <div class="card-header">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-database"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Data Center
+                </h2>
+
+                <p>
+                    Physical server location
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+            <div class="detail-item">
+
+                <span>Data Center</span>
+
+                <strong>
+                    {{ server[18] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Rack</span>
+
+                <strong>
+                    {{ server[19] or '-' }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Rack Position</span>
+
+                <strong>
+                    {{ server[20] or '-' }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         REMARKS
+    ================================================== -->
+
+    <div class="details-card">
+
+
+        <div class="card-header">
+
+            <div class="card-icon">
+
+                <i class="fa-solid fa-note-sticky"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Remarks
+                </h2>
+
+                <p>
+                    Additional server information
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="remarks">
+
+            {{ server[25] or 'No remarks available.' }}
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Laptop</title>
+
+
+    <!-- =================================================
+         CSS
+    ================================================== -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='Add_laptop.css') }}">
+
+
+    <!-- =================================================
+         FONT AWESOME
+    ================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="main">
+
+
+    <div class="asset-form">
+
+
+        <!-- =================================================
+             FORM HEADER
+        ================================================== -->
+
+        <div class="form-header">
+
+            <div class="form-icon">
+
+                <i class="fa-solid fa-laptop"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>Add Laptop</h1>
+
+                <p>
+                    Enter laptop asset information below
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ERROR MESSAGE
+        ================================================== -->
+
+        {% if error %}
+
+        <div class="error">
+
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             SUCCESS MESSAGE
+        ================================================== -->
+
+        {% if success %}
+
+        <div class="success">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            {{ success }}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form method="POST"
+              action="{{ url_for('add_laptop') }}">
+
+
+            <!-- =================================================
+                 ASSET INFORMATION
+            ================================================== -->
+
+            <h2>Asset Information</h2>
+
+
+            <div class="form-grid">
+
+
+                <!-- BRAND -->
+
+                <div class="form-group">
+
+                    <label>
+                        Brand
+                    </label>
+
+                    <input
+                        type="text"
+                        name="brand"
+                        placeholder="Enter brand"
+                        required>
+
+                </div>
+
+
+                <!-- MODEL -->
+
+                <div class="form-group">
+
+                    <label>
+                        Model
+                    </label>
+
+                    <input
+                        type="text"
+                        name="model"
+                        placeholder="Enter model"
+                        required>
+
+                </div>
+
+
+                <!-- SERIAL NUMBER -->
+
+                <div class="form-group">
+
+                    <label>
+                        Serial Number
+                    </label>
+
+                    <input
+                        type="text"
+                        name="serial_number"
+                        placeholder="Enter serial number"
+                        required>
+
+                </div>
+
+
+                <!-- ASSIGNED TO -->
+
+                <div class="form-group">
+
+                    <label>
+                        Assigned To
+                    </label>
+
+                    <select name="assigned_to">
+
+                        <option value="">
+                            Not Assigned
+                        </option>
+
+                        {% for user in users %}
+
+                        <option value="{{ user[0] }}">
+
+                            {{ user[1] }} - {{ user[0] }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        placeholder="Enter location"
+                        required>
+
+                </div>
+
+
+                <!-- SEATING NUMBER -->
+
+                <div class="form-group">
+
+                    <label>
+                        Seating Number
+                    </label>
+
+                    <input
+                        type="text"
+                        name="seating_no"
+                        placeholder="Enter seating number">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 HARDWARE
+            ================================================== -->
+
+            <h2>Hardware</h2>
+
+
+            <div class="form-grid">
+
+
+                <!-- PROCESSOR -->
+
+                <div class="form-group">
+
+                    <label>
+                        Processor
+                    </label>
+
+                    <input
+                        type="text"
+                        name="processor"
+                        placeholder="Example: Intel Core i5"
+                        required>
+
+                </div>
+
+
+                <!-- CPU CORES -->
+
+                <div class="form-group">
+
+                    <label>
+                        CPU Cores
+                    </label>
+
+                    <input
+                        type="text"
+                        name="cpu_cores"
+                        placeholder="Example: 10">
+
+                </div>
+
+
+                <!-- RAM -->
+
+                <div class="form-group">
+
+                    <label>
+                        RAM
+                    </label>
+
+                    <input
+                        type="text"
+                        name="ram"
+                        placeholder="Example: 16 GB"
+                        required>
+
+                </div>
+
+
+                <!-- STORAGE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Storage
+                    </label>
+
+                    <input
+                        type="text"
+                        name="storage"
+                        placeholder="Example: 512 GB"
+                        required>
+
+                </div>
+
+
+                <!-- STORAGE TYPE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Storage Type
+                    </label>
+
+                    <select name="storage_type">
+
+                        <option value="">
+                            Select Storage Type
+                        </option>
+
+                        <option value="SSD">
+                            SSD
+                        </option>
+
+                        <option value="HDD">
+                            HDD
+                        </option>
+
+                        <option value="NVMe">
+                            NVMe
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DISPLAY SIZE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Display Size
+                    </label>
+
+                    <input
+                        type="text"
+                        name="display_size"
+                        placeholder="Example: 14 inch">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 OPERATING SYSTEM
+            ================================================== -->
+
+            <h2>Operating System</h2>
+
+
+            <div class="form-grid">
+
+
+                <!-- OPERATING SYSTEM -->
+
+                <div class="form-group">
+
+                    <label>
+                        Operating System
+                    </label>
+
+                    <input
+                        type="text"
+                        name="operating_system"
+                        placeholder="Example: Windows"
+                        required>
+
+                </div>
+
+
+                <!-- OS VERSION -->
+
+                <div class="form-group">
+
+                    <label>
+                        OS Version
+                    </label>
+
+                    <input
+                        type="text"
+                        name="os_version"
+                        placeholder="Example: Windows 11 Pro">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NETWORK
+            ================================================== -->
+
+            <h2>Network</h2>
+
+
+            <div class="form-grid">
+
+
+                <!-- HOSTNAME -->
+
+                <div class="form-group">
+
+                    <label>
+                        Hostname
+                    </label>
+
+                    <input
+                        type="text"
+                        name="hostname"
+                        placeholder="Example: LAPTOP-001">
+
+                </div>
+
+
+                <!-- IP ADDRESS -->
+
+                <div class="form-group">
+
+                    <label>
+                        IP Address
+                    </label>
+
+                    <input
+                        type="text"
+                        name="ip_address"
+                        placeholder="Example: 192.168.1.10">
+
+                </div>
+
+
+                <!-- MAC ADDRESS -->
+
+                <div class="form-group">
+
+                    <label>
+                        MAC Address
+                    </label>
+
+                    <input
+                        type="text"
+                        name="mac_address"
+                        placeholder="Example: AA:BB:CC:DD:EE:FF">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BATTERY
+            ================================================== -->
+
+            <h2>Battery</h2>
+
+
+            <div class="form-grid">
+
+
+                <!-- BATTERY HEALTH -->
+
+                <div class="form-group">
+
+                    <label>
+                        Battery Health
+                    </label>
+
+                    <select name="battery_health">
+
+                        <option value="">
+                            Select Battery Health
+                        </option>
+
+                        <option value="Excellent">
+                            Excellent
+                        </option>
+
+                        <option value="Good">
+                            Good
+                        </option>
+
+                        <option value="Fair">
+                            Fair
+                        </option>
+
+                        <option value="Poor">
+                            Poor
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ASSET MANAGEMENT
+            ================================================== -->
+
+            <h2>Asset Management</h2>
+
+
+            <div class="form-grid">
+
+
+                <!-- CONDITION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Condition
+                    </label>
+
+                    <select name="condition"
+                            required>
+
+                        <option value="">
+                            Select Condition
+                        </option>
+
+                        <option value="Good">
+                            Good
+                        </option>
+
+                        <option value="Damaged">
+                            Damaged
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select name="status">
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="Available">
+                            Available
+                        </option>
+
+                        <option value="Assigned">
+                            Assigned
+                        </option>
+
+                        <option value="Under Maintenance">
+                            Under Maintenance
+                        </option>
+
+                        <option value="Retired">
+                            Retired
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- WARRANTY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Warranty
+                    </label>
+
+                    <input
+                        type="text"
+                        name="warranty"
+                        placeholder="Example: 3 Years">
+
+                </div>
+
+
+                <!-- LICENSE -->
+
+                <div class="form-group">
+
+                    <label>
+                        License
+                    </label>
+
+                    <input
+                        type="text"
+                        name="license"
+                        placeholder="License information">
+
+                </div>
+
+
+                <!-- REMARKS -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Remarks
+                    </label>
+
+                    <textarea
+                        name="remarks"
+                        placeholder="Additional information"></textarea>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SUBMIT
+            ================================================== -->
+
+            <button
+                type="submit"
+                class="submit">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Add Laptop
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

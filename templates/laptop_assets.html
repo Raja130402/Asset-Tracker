@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Laptop Assets</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='laptop_assets.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>Laptop Assets</h1>
+
+            <p>
+                Manage all registered laptop assets
+            </p>
+
+        </div>
+
+        <div class="header-actions">
+
+            <a href="{{ url_for('system_details') }}"
+               class="add-button">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Assets
+
+            </a>
+
+            <a href="{{ url_for('add_laptop') }}"
+               class="add-button">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Laptop
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Product ID</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Serial Number</th>
+                    <th>Assigned To</th>
+                    <th>Location</th>
+                    <th>RAM</th>
+                    <th>Storage</th>
+                    <th>OS</th>
+                    <th>Condition</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for laptop in laptops %}
+
+                <tr>
+
+                    <td>
+
+                        <a href="{{ url_for(
+                            'laptop_details',
+                            id=laptop[0]
+                        ) }}"
+                           class="product-link">
+
+                            {{ laptop[1] }}
+
+                        </a>
+
+                    </td>
+
+                    <td>
+                        {{ laptop[3] }}
+                    </td>
+
+                    <td>
+                        {{ laptop[4] }}
+                    </td>
+
+                    <td>
+                        {{ laptop[5] }}
+                    </td>
+
+                    <td>
+                        {{ laptop[6] or 'Not Assigned' }}
+                    </td>
+
+                    <td>
+                        {{ laptop[7] or '-' }}
+                    </td>
+
+                    <td>
+                        {{ laptop[11] or '-' }}
+                    </td>
+
+                    <td>
+                        {{ laptop[12] or '-' }}
+                    </td>
+
+                    <td>
+                        {{ laptop[13] or '-' }}
+                    </td>
+
+                    <td>
+
+                        {% if laptop[8]|lower|trim == 'good' %}
+
+                            <span class="status good">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Good
+
+                            </span>
+
+                        {% elif laptop[8]|lower|trim == 'damaged' %}
+
+                            <span class="status damaged">
+
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                                Damaged
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="status">
+
+                                {{ laptop[8] or '-' }}
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="10"
+                        class="no-data">
+
+                        No laptop assets found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
